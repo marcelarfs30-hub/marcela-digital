@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfólio de projetos e soluções digitais de Marcela Rodrigues." />
+  <title>Marcela | Projetos & Soluções Digitais</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0a0a0c;
+      --card:#121217;
+      --card-2:#17171d;
+      --text:#f7f7f8;
+      --muted:#a9a9b2;
+      --line:#24242b;
+      --accent:#ff3040;
+      --accent-2:#ff5966;
+      --white:#ffffff;
+      --shadow:0 20px 60px rgba(0,0,0,.35);
+      --radius:22px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Inter',sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(255,48,64,.14), transparent 28%),
+        radial-gradient(circle at bottom left, rgba(255,48,64,.08), transparent 30%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    button,input,textarea{font:inherit}
+
+    .container{
+      width:min(1160px, calc(100% - 36px));
+      margin:auto;
+    }
+
+    .nav{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      backdrop-filter:blur(18px);
+      background:rgba(10,10,12,.72);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+
+    .nav-inner{
+      min-height:76px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-family:'Manrope',sans-serif;
+      font-weight:800;
+      font-size:1.05rem;
+    }
+
+    .brand-mark{
+      width:38px;
+      height:38px;
+      border-radius:12px;
+      background:linear-gradient(135deg,var(--accent),#a90014);
+      display:grid;
+      place-items:center;
+      box-shadow:0 10px 30px rgba(255,48,64,.25);
+      font-weight:800;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:26px;
+      align-items:center;
+      color:#d7d7dc;
+      font-size:.94rem;
+    }
+
+    .nav-links a:hover{color:#fff}
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:14px 20px;
+      border-radius:14px;
+      font-weight:700;
+      border:1px solid transparent;
+      transition:.25s ease;
+      cursor:pointer;
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg,var(--accent),#d9001c);
+      color:#fff;
+      box-shadow:0 12px 28px rgba(255,48,64,.22);
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-2px);
+      box-shadow:0 16px 34px rgba(255,48,64,.3);
+    }
+
+    .btn-secondary{
+      border-color:var(--line);
+      background:rgba(255,255,255,.03);
+      color:#fff;
+    }
+
+    .btn-secondary:hover{
+      background:rgba(255,255,255,.07);
+      transform:translateY(-2px);
+    }
+
+    .hero{
+      padding:92px 0 74px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.12fr .88fr;
+      gap:54px;
+      align-items:center;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:8px 12px;
+      border:1px solid rgba(255,48,64,.28);
+      border-radius:999px;
+      background:rgba(255,48,64,.07);
+      color:#ff8b95;
+      font-size:.85rem;
+      font-weight:700;
+      margin-bottom:22px;
+    }
+
+    .eyebrow-dot{
+      width:8px;height:8px;border-radius:50%;background:var(--accent);
+      box-shadow:0 0 0 5px rgba(255,48,64,.12);
+    }
+
+    h1,h2,h3{
+      font-family:'Manrope',sans-serif;
+      line-height:1.08;
+    }
+
+    h1{
+      font-size:clamp(2.8rem,6vw,5.6rem);
+      letter-spacing:-.06em;
+      max-width:760px;
+    }
+
+    .hero .highlight{
+      color:var(--accent-2);
+    }
+
+    .hero p{
+      color:var(--muted);
+      max-width:660px;
+      font-size:1.08rem;
+      margin:24px 0 30px;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+
+    .hero-card{
+      background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.025));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:30px;
+      padding:20px;
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero-card::before{
+      content:"";
+      position:absolute;
+      width:220px;height:220px;
+      background:rgba(255,48,64,.15);
+      filter:blur(70px);
+      top:-80px;right:-70px;
+    }
+
+    .screen{
+      position:relative;
+      background:#0e0e12;
+      border:1px solid var(--line);
+      border-radius:22px;
+      overflow:hidden;
+      min-height:410px;
+    }
+
+    .screen-top{
+      display:flex;
+      gap:7px;
+      padding:14px 16px;
+      border-bottom:1px solid var(--line);
+      background:#131318;
+    }
+
+    .dot{width:9px;height:9px;border-radius:50%;background:#42424b}
+    .dot.red{background:var(--accent)}
+
+    .screen-content{
+      padding:28px;
+    }
+
+    .mini-label{
+      font-size:.78rem;
+      color:#ff8892;
+      font-weight:700;
+      margin-bottom:8px;
+    }
+
+    .mini-title{
+      font-size:1.6rem;
+      margin-bottom:14px;
+    }
+
+    .mini-card{
+      margin-top:18px;
+      padding:17px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:#141419;
+    }
+
+    .mini-card strong{display:block;margin-bottom:6px}
+    .mini-card span{color:var(--muted);font-size:.9rem}
+
+    .section{
+      padding:86px 0;
+    }
+
+    .section-head{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:30px;
+      margin-bottom:34px;
+    }
+
+    .section-head h2{
+      font-size:clamp(2rem,4vw,3.6rem);
+      letter-spacing:-.04em;
+    }
+
+    .section-head p{
+      color:var(--muted);
+      max-width:560px;
+    }
+
+    .projects{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
+    }
+
+    .project-card{
+      border:1px solid var(--line);
+      background:linear-gradient(180deg,var(--card),#0f0f13);
+      border-radius:var(--radius);
+      overflow:hidden;
+      transition:.25s ease;
+    }
+
+    .project-card:hover{
+      transform:translateY(-5px);
+      border-color:#3a3a45;
+      box-shadow:var(--shadow);
+    }
+
+    .project-image{
+      height:220px;
+      padding:22px;
+      background:
+        linear-gradient(135deg,rgba(255,48,64,.15),transparent 55%),
+        #15151a;
+      display:flex;
+      align-items:end;
+    }
+
+    .mock{
+      width:100%;
+      border:1px solid #303039;
+      border-radius:16px 16px 0 0;
+      background:#0d0d11;
+      padding:18px;
+      min-height:150px;
+    }
+
+    .mock-line{
+      height:9px;
+      border-radius:20px;
+      background:#25252c;
+      margin-bottom:10px;
+    }
+
+    .mock-line.red{background:rgba(255,48,64,.8);width:42%}
+    .mock-line.w70{width:70%}
+    .mock-line.w55{width:55%}
+
+    .project-body{
+      padding:24px;
+    }
+
+    .tag{
+      display:inline-block;
+      font-size:.75rem;
+      font-weight:700;
+      color:#ff8b95;
+      background:rgba(255,48,64,.08);
+      border:1px solid rgba(255,48,64,.18);
+      border-radius:999px;
+      padding:6px 10px;
+      margin-bottom:14px;
+    }
+
+    .project-body h3{
+      font-size:1.35rem;
+      margin-bottom:10px;
+    }
+
+    .project-body p{
+      color:var(--muted);
+      font-size:.93rem;
+      min-height:72px;
+    }
+
+    .project-actions{
+      display:flex;
+      gap:10px;
+      margin-top:20px;
+      flex-wrap:wrap;
+    }
+
+    .project-actions .btn{
+      padding:11px 14px;
+      font-size:.86rem;
+      flex:1;
+    }
+
+    .features{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+      margin-top:32px;
+    }
+
+    .feature{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.025);
+      border-radius:18px;
+      padding:22px;
+    }
+
+    .feature-num{
+      color:var(--accent-2);
+      font-family:'Manrope',sans-serif;
+      font-size:1.5rem;
+      font-weight:800;
+      margin-bottom:12px;
+    }
+
+    .feature h3{font-size:1rem;margin-bottom:7px}
+    .feature p{font-size:.88rem;color:var(--muted)}
+
+    .cta{
+      border:1px solid rgba(255,48,64,.22);
+      background:
+        radial-gradient(circle at top right,rgba(255,48,64,.22),transparent 30%),
+        linear-gradient(135deg,#141419,#0d0d10);
+      border-radius:30px;
+      padding:48px;
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:30px;
+      align-items:center;
+    }
+
+    .cta h2{
+      font-size:clamp(2rem,4vw,3.4rem);
+      letter-spacing:-.04em;
+      margin-bottom:12px;
+    }
+
+    .cta p{color:var(--muted);max-width:700px}
+
+    .about-grid{
+      display:grid;
+      grid-template-columns:.85fr 1.15fr;
+      gap:44px;
+      align-items:center;
+    }
+
+    .about-card{
+      min-height:420px;
+      border-radius:28px;
+      border:1px solid var(--line);
+      background:#15151a;
+      overflow:hidden;
+      position:relative;
+      box-shadow:var(--shadow);
+    }
+
+    .about-photo{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+    }
+
+    .about-card::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top,rgba(10,10,12,.30),transparent 48%);
+      pointer-events:none;
+    }
+
+    .about-text h2{
+      font-size:clamp(2rem,4vw,3.5rem);
+      letter-spacing:-.04em;
+      margin-bottom:18px;
+    }
+
+    .about-text p{
+      color:var(--muted);
+      margin-bottom:16px;
+    }
+
+    footer{
+      border-top:1px solid var(--line);
+      padding:30px 0 40px;
+      color:#85858f;
+      font-size:.9rem;
+    }
+
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+
+    .mobile-menu{display:none}
+
+    @media (max-width: 900px){
+      .hero-grid,.about-grid,.cta{
+        grid-template-columns:1fr;
+      }
+      .projects{grid-template-columns:1fr 1fr}
+      .features{grid-template-columns:1fr 1fr}
+      .nav-links{display:none}
+      .mobile-menu{display:inline-flex}
+      .hero{padding-top:64px}
+    }
+
+    @media (max-width: 620px){
+      .projects,.features{grid-template-columns:1fr}
+      .section{padding:64px 0}
+      .cta{padding:30px}
+      .hero-card{padding:12px}
+      .screen{min-height:auto}
+      .project-actions{flex-direction:column}
+      .section-head{align-items:flex-start;flex-direction:column}
+      h1{font-size:2.75rem}
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="#inicio" class="brand">
+        <span class="brand-mark">M</span>
+        <span>Marcela Digital</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#projetos">Projetos</a>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#contato">Contato</a>
+      </div>
+
+      <a class="btn btn-primary mobile-menu" href="#projetos">Ver projetos</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            Projetos digitais prontos para usar
+          </div>
+
+          <h1>
+            Soluções digitais que transformam
+            <span class="highlight">ideias em experiência.</span>
+          </h1>
+
+          <p>
+            Aplicativos, treinamentos interativos, sistemas e projetos digitais
+            desenvolvidos para tornar processos mais simples, modernos e eficientes.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projetos">Explorar projetos</a>
+            <a class="btn btn-secondary" href="#contato">Quero algo personalizado</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="screen">
+            <div class="screen-top">
+              <span class="dot red"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+            <div class="screen-content">
+              <div class="mini-label">DESTAQUE</div>
+              <h3 class="mini-title">Treinamentos Interativos</h3>
+              <div class="mock-line red"></div>
+              <div class="mock-line w70"></div>
+              <div class="mock-line w55"></div>
+
+              <div class="mini-card">
+                <strong>Quiz com resultado em tempo real</strong>
+                <span>Experiência moderna e intuitiva para treinamentos corporativos.</span>
+              </div>
+
+              <div class="mini-card">
+                <strong>Certificados e acompanhamento</strong>
+                <span>Ideal para ações internas, capacitações e projetos educacionais.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projetos">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">PORTFÓLIO</div>
+            <h2>Projetos em destaque</h2>
+          </div>
+          <p>
+            Você pode trocar estes projetos pelos seus produtos reais e colocar
+            em cada botão o link direto do checkout da Kiwify.
+          </p>
+        </div>
+
+        <div class="projects">
+
+          <article class="project-card">
+            <div class="project-image">
+              <div class="mock">
+                <div class="mock-line red"></div>
+                <div class="mock-line w70"></div>
+                <div class="mock-line w55"></div>
+              </div>
+            </div>
+            <div class="project-body">
+              <span class="tag">TREINAMENTO</span>
+              <h3>Treinamento Interativo Corporativo</h3>
+              <p>
+                Plataforma com conteúdo, quiz, resultados e certificado de participação.
+              </p>
+              <div class="project-actions">
+                <a class="btn btn-secondary" href="#" target="_blank">Ver demonstração</a>
+                <a class="btn btn-primary" href="https://pay.kiwify.com.br/SEU-LINK" target="_blank">Comprar acesso</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-image">
+              <div class="mock">
+                <div class="mock-line red"></div>
+                <div class="mock-line w55"></div>
+                <div class="mock-line w70"></div>
+              </div>
+            </div>
+            <div class="project-body">
+              <span class="tag">RH / GESTÃO</span>
+              <h3>Dashboard de Indicadores</h3>
+              <p>
+                Visualização organizada de dados, indicadores, métricas e resultados.
+              </p>
+              <div class="project-actions">
+                <a class="btn btn-secondary" href="#" target="_blank">Ver demonstração</a>
+                <a class="btn btn-primary" href="https://pay.kiwify.com.br/SEU-LINK" target="_blank">Comprar acesso</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-image">
+              <div class="mock">
+                <div class="mock-line red"></div>
+                <div class="mock-line w70"></div>
+                <div class="mock-line w55"></div>
+              </div>
+            </div>
+            <div class="project-body">
+              <span class="tag">AUTOMAÇÃO</span>
+              <h3>Sistema de Controle e Cadastro</h3>
+              <p>
+                Solução digital para cadastros, acessos, registros e organização de informações.
+              </p>
+              <div class="project-actions">
+                <a class="btn btn-secondary" href="#" target="_blank">Ver demonstração</a>
+                <a class="btn btn-primary" href="https://pay.kiwify.com.br/SEU-LINK" target="_blank">Comprar acesso</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="como-funciona">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">SIMPLES E DIRETO</div>
+            <h2>Como funciona</h2>
+          </div>
+          <p>
+            Uma jornada curta entre conhecer o projeto e começar a usar.
+          </p>
+        </div>
+
+        <div class="features">
+          <div class="feature">
+            <div class="feature-num">01</div>
+            <h3>Escolha um projeto</h3>
+            <p>Veja as soluções disponíveis e escolha a que mais combina com sua necessidade.</p>
+          </div>
+
+          <div class="feature">
+            <div class="feature-num">02</div>
+            <h3>Veja a demonstração</h3>
+            <p>Conheça a experiência antes da compra através de uma versão demonstrativa.</p>
+          </div>
+
+          <div class="feature">
+            <div class="feature-num">03</div>
+            <h3>Compre pela Kiwify</h3>
+            <p>O pagamento é feito pelo checkout da plataforma configurada por você.</p>
+          </div>
+
+          <div class="feature">
+            <div class="feature-num">04</div>
+            <h3>Receba o acesso</h3>
+            <p>Depois da compra, o cliente recebe as instruções ou o acesso ao produto.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="cta">
+          <div>
+            <h2>Precisa de algo exclusivo?</h2>
+            <p>
+              Também posso desenvolver soluções personalizadas para projetos,
+              treinamentos, RH, dashboards, formulários e automações.
+            </p>
+          </div>
+          <a class="btn btn-primary" href="https://wa.me/5500000000000" target="_blank">
+            Solicitar projeto
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sobre">
+      <div class="container about-grid">
+        <div class="about-card">
+          <img class="about-photo" src="https://i.imgur.com/osIvykm.jpeg" alt="Foto de Marcela Rodrigues">
+        </div>
+
+        <div class="about-text">
+          <div class="eyebrow">SOBRE</div>
+          <h2>Tecnologia com foco em experiência e praticidade.</h2>
+          <p>
+            Este espaço reúne projetos digitais desenvolvidos para resolver problemas
+            reais de forma simples, visual e acessível.
+          </p>
+          <p>
+            Cada solução pode ser adaptada para diferentes necessidades, desde
+            treinamentos e questionários até controles internos e sistemas personalizados.
+          </p>
+          <a class="btn btn-secondary" href="#contato">Falar comigo</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contato">
+      <div class="container">
+        <div class="cta">
+          <div>
+            <div class="eyebrow">CONTATO</div>
+            <h2>Vamos tirar seu projeto do papel?</h2>
+            <p>
+              Entre em contato para dúvidas, personalizações ou desenvolvimento de uma solução nova.
+            </p>
+          </div>
+          <a class="btn btn-primary" href="mailto:seuemail@exemplo.com">Entrar em contato</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> Marcela Digital. Todos os direitos reservados.</span>
+      <span>Projetos & Soluções Digitais</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
